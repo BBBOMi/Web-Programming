@@ -27,18 +27,42 @@ public class APIController {
         this.employeeRepository = employeeRepository;
     }
 
+    /**
+     * employee의 목록 조회
+     * @return  employee의 전체목록
+     */
     @GetMapping("employees")
     public List<Employee> employees() {
         return employeeRepository.findAll();
     }
 
+    /**
+     * 특정 id의 employee 조회
+     * @param id
+     * @return Employee 객체
+     */
     @GetMapping("employee/{id}")
     public Employee employee(@PathVariable("id") int id) {
         return employeeRepository.findById(id).get();
     }
 
+    /**
+     * department 목록 조회
+     * @return  department의 전체 목록
+     */
     @GetMapping("departments")
     public List<Department> departments() {
         return departmentRepository.findAll();
+    }
+
+    /**
+     * 해당 department에 소속 되어 있는 employee 목롤 조회
+     * @param id department의 고유 id값
+     * @return department에 소속 되어 있는 employee의 목록
+     */
+    @GetMapping("department/{id}/employees")
+    public List<Employee> departmentEmployees(@PathVariable("id") int id) {
+        Department department = departmentRepository.findById(id).get();
+        return department.getEmployees();
     }
 }
