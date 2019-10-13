@@ -18,8 +18,8 @@ public class Address {
 
     @JsonIgnore
     /*
-    @OneToOne, @ManyToOne -> fetch property의 default value는 FetchType.EAGER
-    @OneToMany의 fetch property default value는 FetchType.LAZY
+    @OneToOne, @ManyToOne -> fetch property default value는 FetchType.EAGER
+    @OneToMany, @ManyToMany -> fetch property default value는 FetchType.LAZY
      */
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employeeId")
