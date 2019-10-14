@@ -2,7 +2,6 @@ package net.skhu.jpa11.api;
 
 import net.skhu.jpa11.domain.*;
 import net.skhu.jpa11.repository.DepartmentRepository;
-import net.skhu.jpa11.repository.ProfessorRepository;
 import net.skhu.jpa11.repository.StudentRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,14 +20,11 @@ import java.util.List;
 public class APIController {
     final DepartmentRepository departmentRepository;
     final StudentRepository studentRepository;
-    final ProfessorRepository professorRepository;
 
     public APIController(final DepartmentRepository departmentRepository,
-                         final StudentRepository studentRepository,
-                         final ProfessorRepository professorRepository) {
+                         final StudentRepository studentRepository) {
         this.departmentRepository = departmentRepository;
         this.studentRepository = studentRepository;
-        this.professorRepository = professorRepository;
     }
 
     @GetMapping("departments")
